@@ -8,6 +8,11 @@ services:
             - "5044:5044"
         volumes:
             - ./docker/elk/config:/opt/logstash/config/sql
+            - ./queries:/opt/logstash/config/statements
+        environment:
+            CONNEXION_STRING: jdbc:mysql://172.18.0.9/cinefabrique
+            CONNEXION_USER: cinefabrique
+            CONNEXION_PWD: cinefabrique
 
 networks:
     default:

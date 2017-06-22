@@ -63,4 +63,4 @@ bash:
 
 logstash:
 	@echo "$(step) Load logstash conf for $(project) $(step)"
-	@$(compose) run --rm elk /opt/logstash/bin/logstash -f /opt/logstash/config/sql/$(file)
+	@$(compose) run --rm elk /opt/logstash/bin/logstash -f /opt/logstash/config/sql/
