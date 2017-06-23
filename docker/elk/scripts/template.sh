@@ -16,15 +16,20 @@ input {
     jdbc_connection_string => "$CONNEXION_STRING"
     jdbc_user => "$CONNEXION_USER"
     jdbc_password => "$CONNEXION_PWD"
+    use_column_value => true
+    tracking_column => id
     schedule => "* * * * *"
     statement_filepath => "$STATEMENT_PATH"
+    type => "$STATEMENT_NAME"
   }
 }
 output { 
-	elasticsearch { 
-		hosts => ["localhost:9200"]
-		document_type => "$STATEMENT_NAME"         
-		document_id => "%{id}"
-	} 
+  if [type] == "$STATEMENT_NAME" {
+  	elasticsearch { 
+  		hosts => ["localhost:9200"]
+  		document_type => "$STATEMENT_NAME"         
+  		document_id => "%{id}"
+  	} 
+  }
 }
 EOF
