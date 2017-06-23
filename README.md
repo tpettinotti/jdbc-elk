@@ -1,4 +1,4 @@
-###Installation
+### Installation
 
 Add a docker-compose.yml file, following this model
 ```
@@ -28,8 +28,9 @@ If you don't need any SSH tunnel, leave SSH_TUNNEL_* var empty.
 Add yours SQL queries under the `queries/` directory.
 /!\ You need to set an 'id' column for all queries. Alias another if there is none.
 
-
 ###Usage
+
+### Usage
 
 Run with `docker exec -it elkdata_elk_1 bash -c "/root/run.sh"`
 
