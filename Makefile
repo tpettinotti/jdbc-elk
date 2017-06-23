@@ -46,7 +46,7 @@ up:
 	@echo "$(step) Starting $(project) $(step)"
 	@$(compose) up -d elk
 
-start: up run
+start: up
 
 stop:
 	@echo "$(step) Stopping $(project) $(step)"
