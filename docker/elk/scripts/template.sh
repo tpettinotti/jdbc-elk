@@ -17,12 +17,12 @@ input {
     jdbc_user => "$CONNEXION_USER"
     jdbc_password => "$CONNEXION_PWD"
     schedule => "* * * * *"
-    statement => "$STATEMENT_PATH"
+    statement_filepath => "$STATEMENT_PATH"
   }
 }
 output { 
 	elasticsearch { 
-		hosts => ["172.18.0.7:9200"]
+		hosts => ["localhost:9200"]
 		document_type => "$STATEMENT_NAME"         
 		document_id => "%{id}"
 	} 

@@ -46,7 +46,7 @@ up:
 	@echo "$(step) Starting $(project) $(step)"
 	@$(compose) up -d elk
 
-start: up
+start: up run
 
 stop:
 	@echo "$(step) Stopping $(project) $(step)"
@@ -66,6 +66,6 @@ bash:
 	@echo "$(step) Bash $(project) $(step)"
 	@$(compose) run --rm elk bash
 
-logstash:
+run:
 	@echo "$(step) Load logstash conf for $(project) $(step)"
-	@$(compose) run --rm elk /opt/logstash/bin/logstash -f /opt/logstash/config/sql/
+	@$(compose) exec -it elkdata_elk_1 bash -c "/root/run.sh"

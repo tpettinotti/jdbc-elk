@@ -7,10 +7,11 @@ services:
             - "9200:9200"
             - "5044:5044"
         environment:
-            CONNEXION_STRING: jdbc:mysql://172.18.0.9/cinefabrique
+            CONNEXION_STRING: jdbc:mysql://172.18.0.10/cinefabrique
             CONNEXION_USER: cinefabrique
             CONNEXION_PWD: cinefabrique
-
+        volumes:
+            - './queries:/root/statements'
 networks:
     default:
         external:
