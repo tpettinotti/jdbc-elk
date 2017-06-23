@@ -16,5 +16,7 @@ services:
             SSH_TUNNEL_MYSQL_LOCAL_PORT: 1234
             SSH_TUNNEL_MYSQL_REMOTE_HOST: 127.0.0.1
             SSH_TUNNEL_MYSQL_REMOTE_PORT: 3306
+            SSH_AUTH_SOCK: /ssh-agent
         volumes:
             - './queries:/root/statements'
+            - '$SSH_AUTH_SOCK:/ssh-agent'

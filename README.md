@@ -21,17 +21,24 @@ services:
 Make sure to overwrite the environnements variables you need.
 
 If you don't need any SSH tunnel, leave SSH_TUNNEL_* var empty.
+In order to use your host's key, you need to add it to your ssh-agent. The docker-compose will share it with the container.
 
 `make build`
+
 `make up`
 
 Add yours SQL queries under the `queries/` directory.
-/!\ You need to set an 'id' column for all queries. Alias another if there is none.
+You need to set an 'id' column for all queries. Alias another if there is none.
 
-###Usage
 
 ### Usage
 
 Run with `docker exec -it elkdata_elk_1 bash -c "/root/run.sh"`
 
 Kibana : ELK:5601
+
+### Issues
+
+If the container stop silently after a moment, it may be a memory error
+
+https://www.elastic.co/guide/en/elasticsearch/reference/5.0/vm-max-map-count.html#vm-max-map-count
