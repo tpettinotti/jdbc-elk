@@ -37,6 +37,11 @@ build: remove
 	@echo "$(step) Building images docker $(step)"
 	@$(compose) build
 
+# MANAGE
+build-no-cache: remove
+	@echo "$(step) Building images docker $(step)"
+	@$(compose) build --no-cache
+
 up:
 	@echo "$(step) Starting $(project) $(step)"
 	@$(compose) up -d elk
