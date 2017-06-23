@@ -1,4 +1,4 @@
-### Installation
+### Setup
 
 Add a docker-compose.yml file, following this model
 ```
@@ -11,7 +11,7 @@ services:
         environment:
             CONNEXION_STRING: 	#your jdbc connexion string
             CONNEXION_USER: 	#your mysql user
-            CONNEXION_PWD: 		#your mysql password
+            CONNEXION_PWD:      #your mysql password
             SSH_TUNNEL_PORT: 	#Your ssh port
             SSH_TUNNEL_USER: 	#your ssh user
             SSH_TUNNEL_HOST: 	#your ssh host
