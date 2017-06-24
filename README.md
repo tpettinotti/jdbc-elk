@@ -1,7 +1,7 @@
 ### Setup
 
 Add a docker-compose.yml file, following this model
-```
+```yml
 version: '2'
 services:
     elk:
@@ -30,14 +30,20 @@ In order to use your host's key, you need to add it to your ssh-agent. The docke
 Add yours SQL queries under the `queries/` directory.
 You need to set an 'id' column for all queries. Alias another if there is none.
 
+Example:
+
+_queries/user.sql_
+```sql
+SELECT * From user;
+```
 
 ### Usage
 
 Run with `docker exec -it elkdata_elk_1 bash -c "/root/run.sh"`
 
-Kibana : ELK:5601
+Kibana : your_container_ip:5601
 
-### Issues
+### Known issues
 
 If the container stop silently after a moment, it may be a memory error
 
