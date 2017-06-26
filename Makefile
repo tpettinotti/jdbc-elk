@@ -65,7 +65,3 @@ remove: stop
 bash:
 	@echo "$(step) Bash $(project) $(step)"
 	@$(compose) run --rm elk bash
-
-run:
-	@echo "$(step) Load logstash conf for $(project) $(step)"
-	@$(compose) exec -it elkdata_elk_1 bash -c "/root/run.sh"
