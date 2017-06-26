@@ -1,5 +1,7 @@
 FROM sebp/elk:521
 
+ENV QUERIES_LOCATION /root/queries
+
 RUN apt-get update -qq && apt-get install -qqy \
     autossh \
     supervisor \
@@ -16,6 +18,8 @@ RUN tar -zxvf /tmp/mysql-connector-java-5.1.42.tar.gz -C /root/ \
 
 #Create volume to persist elasticsearch data
 VOLUME /var/lib/elasticsearch
+
+#ENV SSH_AUTH_SOCK /ssh-agent
 
 #Configure supervisor
 ADD ./conf/run.conf /etc/supervisor/conf.d/run.conf
