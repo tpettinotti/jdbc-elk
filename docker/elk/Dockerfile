@@ -14,7 +14,14 @@ ADD https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.42.
 RUN tar -zxvf /tmp/mysql-connector-java-5.1.42.tar.gz -C /root/ \
   && rm /tmp/mysql-connector-java-5.1.42.tar.gz
 
+#Create volume to persist elasticsearch data
+VOLUME /var/lib/elasticsearch
+
+#Configure supervisor
 ADD ./conf/run.conf /etc/supervisor/conf.d/run.conf
+
+#scripts files for logstash and SSH tunneling service
 ADD ./bin /root/app/
 
+#CMD that launch ELK stack and start all services
 CMD ["/root/app/start.sh"]
