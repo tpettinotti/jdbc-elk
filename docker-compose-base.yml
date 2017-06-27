@@ -14,5 +14,5 @@ services:
             SSH_TUNNEL_HOST: ~
             SSH_AUTH_SOCK: /ssh-agent
         volumes:
-            - './queries:/root/queries'
+            - './queries:/queries'
             - '$SSH_AUTH_SOCK:/ssh-agent'
