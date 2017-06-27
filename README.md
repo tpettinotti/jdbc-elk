@@ -1,37 +1,57 @@
 ### Setup
 
-Add a docker-compose.yml file, following this model
+Add a docker-compose.yml file, following this model :
+
 ```yml
 version: '2'
 services:
     elk:
-        extends:
-            file: docker-compose-base.yml
-            service: elk
+        image: tpettinotti/elk-jdbc
+        ports:
+            - "5601:5601"
+            - "9200:9200"
+            - "5044:5044"
         environment:
-            CONNEXION_STRING: 	#your jdbc connexion string
-            CONNEXION_USER: 	#your mysql user
-            CONNEXION_PWD:      #your mysql password
-            SSH_TUNNEL_PORT: 	#Your ssh port
-            SSH_TUNNEL_USER: 	#your ssh user
-            SSH_TUNNEL_HOST: 	#your ssh host
-
+            CONNEXION_STRING: ~
+            CONNEXION_USER: ~
+            CONNEXION_PWD: ~
+        volumes:
+            - './queries:/queries'
 ```
 
-Make sure to overwrite the environnements variables you need.
+#### Using SSH Tunneling option
 
-If you don't need any SSH tunnel, leave SSH_TUNNEL_* var empty.
+To enable SSH tunneling, just add the following environnement variables : 
 
-#### ssh-agent
+```yml
+    environment:
+        SSH_TUNNEL_USER: ~
+        SSH_TUNNEL_HOST: ~
+```
+
+You may want to override the default values for your tunnel, using :
+
+```yml
+    environment:
+        SSH_TUNNEL_PORT: _22_
+        SSH_TUNNEL_MYSQL_LOCAL_PORT: _1234_
+        SSH_TUNNEL_MYSQL_REMOTE_HOST: _127.0.0.1_
+        SSH_TUNNEL_MYSQL_REMOTE_PORT: _3306_
+```
+
+#### Private key authentification for SSH Tunneling
+
 In order to use your host's private key, you need to add it to your ssh-agent. The docker-compose will share it with the container.
 
-
+```yml
+        environment:
+            SSH_AUTH_SOCK: /ssh-agent
+        volumes:
+            - '$SSH_AUTH_SOCK:/ssh-agent'
 ```
-eval "$(ssh-agent -s)"
-Agent pid 59566
-```
 
-Add your SSH private key to the ssh-agent.
+Remeber to add your SSH private key to the ssh-agent.
+
 ```
 ssh-add ~/.ssh/id_rsa
 ```
@@ -40,7 +60,7 @@ If you named your key differently, replace _id_rsa_ in the command with the name
 
 ### Usage
 
-Add yours SQL queries under the `queries/` directory.
+Add yours SQL queries under the `queries/` directory (as defined in your docker-compose).
 You need to set an 'id' column for all queries. Alias another if there is none.
 
 *Example:*
@@ -54,7 +74,6 @@ SELECT * From user;
 `make up`
 
 Kibana : localhost:5601
-
 
 ### Known issues
 
