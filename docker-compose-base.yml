@@ -13,6 +13,7 @@ services:
             SSH_TUNNEL_USER: ~
             SSH_TUNNEL_HOST: ~
             SSH_AUTH_SOCK: /ssh-agent
+            TRACKING_COLUMN: id
         volumes:
             - './queries:/queries'
             - '$SSH_AUTH_SOCK:/ssh-agent'
