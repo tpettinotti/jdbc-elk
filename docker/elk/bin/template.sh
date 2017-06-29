@@ -6,6 +6,7 @@ CONNEXION_USER=$2
 CONNEXION_PWD=$3
 STATEMENT_PATH=$4
 STATEMENT_NAME=$5
+TRACKING_COLUMN=$6
 
 #define the template.
 cat  << EOF
@@ -17,7 +18,7 @@ input {
     jdbc_user => "$CONNEXION_USER"
     jdbc_password => "$CONNEXION_PWD"
     use_column_value => true
-    tracking_column => id
+    tracking_column => "$TRACKING_COLUMN"
     schedule => "* * * * *"
     statement_filepath => "$STATEMENT_PATH"
     type => "$STATEMENT_NAME"
