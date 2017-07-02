@@ -3,6 +3,8 @@ FROM sebp/elk:521
 RUN apt-get update -qq && apt-get install -qqy \
     autossh \
     supervisor \
+    htop \
+    nano \
     && echo "Europe/Paris" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata \
     && echo 'alias ll="ls -lah --color=auto"' >> /etc/bash.bashrc
 
@@ -23,13 +25,8 @@ ADD ./conf/run.conf /etc/supervisor/conf.d/run.conf
 #scripts files for logstash and SSH tunneling service
 ADD ./bin /root/app/
 
-# For debug only, should be removed
-
+# Change security entropy
 RUN cat /root/app/java.security >> /etc/java-8-openjdk/security/java.security
-
-RUN apt-get update -qq && apt-get install -qqy \
-    mysql-client \
-    htop
 
 #CMD that launch ELK stack and start all services
 CMD ["/root/app/start.sh"]
