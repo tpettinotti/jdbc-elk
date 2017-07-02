@@ -1,0 +1,2 @@
+# Change entropy file because /dev/random is too short for logstash
+securerandom.source=file:/dev/urandom

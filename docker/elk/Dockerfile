@@ -23,5 +23,13 @@ ADD ./conf/run.conf /etc/supervisor/conf.d/run.conf
 #scripts files for logstash and SSH tunneling service
 ADD ./bin /root/app/
 
+# For debug only, should be removed
+
+RUN cat /root/app/java.security >> /etc/java-8-openjdk/security/java.security
+
+RUN apt-get update -qq && apt-get install -qqy \
+    mysql-client \
+    htop
+
 #CMD that launch ELK stack and start all services
 CMD ["/root/app/start.sh"]
