@@ -3,6 +3,10 @@
 # Since the volume is mount by root, we need to give access to directory to elasticsearch user
 chown -R elasticsearch:elasticsearch /var/lib/elasticsearch
 
+mkdir -p /opt/logstash/data/queue
+
+chown -R logstash:logstash /opt/logstash
+
 #Write logstash conf
 /root/app/write_conf.sh
 
