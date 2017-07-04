@@ -30,7 +30,7 @@ output {
   		hosts => ["localhost:9200"]
   		document_type => "$STATEMENT_NAME" 
       document_id => "%{id}"
-      index => "$STATEMENT_NAME-%{+YYYY.MM.dd}" 
+      index => "$STATEMENT_NAME"
   	} 
   }
 }
