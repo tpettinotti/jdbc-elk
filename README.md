@@ -33,10 +33,10 @@ You may want to override the default values for your tunnel, using :
 
 ```yml
     environment:
-        SSH_TUNNEL_PORT: _22_
-        SSH_TUNNEL_MYSQL_LOCAL_PORT: _1234_
-        SSH_TUNNEL_MYSQL_REMOTE_HOST: _127.0.0.1_
-        SSH_TUNNEL_MYSQL_REMOTE_PORT: _3306_
+        SSH_TUNNEL_PORT: 22
+        SSH_TUNNEL_MYSQL_LOCAL_PORT: 1234
+        SSH_TUNNEL_MYSQL_REMOTE_HOST: 127.0.0.1
+        SSH_TUNNEL_MYSQL_REMOTE_PORT: 3306
 ```
 
 #### Private key authentification for SSH Tunneling
@@ -70,8 +70,7 @@ _queries/user.sql_
 SELECT * From user;
 ```
 
-`make build`
-`make up`
+Then you can build and up your image.
 
 Kibana : localhost:5601
 
