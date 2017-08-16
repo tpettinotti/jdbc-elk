@@ -1,10 +1,11 @@
-FROM sebp/elk:521
+FROM sebp/elk:551
 
 RUN apt-get update -qq && apt-get install -qqy \
     autossh \
     supervisor \
     htop \
     nano \
+    tzdata \
     && echo "Europe/Paris" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata \
     && echo 'alias ll="ls -lah --color=auto"' >> /etc/bash.bashrc
 
