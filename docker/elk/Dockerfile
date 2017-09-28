@@ -1,4 +1,4 @@
-FROM sebp/elk:551
+FROM sebp/elk:561
 
 RUN apt-get update -qq && apt-get install -qqy \
     autossh \
