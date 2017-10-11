@@ -39,6 +39,10 @@ You may want to override the default values for your tunnel, using :
         SSH_TUNNEL_MYSQL_REMOTE_PORT: 3306
 ```
 
+### Default Logstash
+
+This image start his own logstash instance. If you also need to start the default sebp/elk logstash, you need to set the `LOGSTASH_START` environnemment variable to 1
+
 #### Private key authentification for SSH Tunneling
 
 In order to use your host's private key, you need to add it to your ssh-agent. The docker-compose will share it with the container.
@@ -70,7 +74,14 @@ _queries/user.sql_
 SELECT * From user;
 ```
 
-Then you can build and up your image.
+### Start your project : 
+
+You can build and up your image using :
+
+```
+ docker-compose build
+ docker-compose up
+```
 
 Kibana : localhost:5601
 

@@ -29,5 +29,8 @@ ADD ./bin /root/app/
 # Change security entropy
 RUN cat /root/app/java.security >> /etc/java-8-openjdk/security/java.security
 
+#Disable Logstash auto start, because we are going to start our own.
+ENV LOGSTASH_START=0
+
 #CMD that launch ELK stack and start all services
 CMD ["/root/app/start.sh"]
